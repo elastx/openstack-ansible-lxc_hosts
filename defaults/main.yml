@@ -97,9 +97,17 @@ lxc_net_manage_iptables: true  ## If "true" iptables rules will be added when th
 # lxc container dhcp settings
 lxc_net_dhcp_range: 10.0.3.2,10.0.3.253
 lxc_net_dhcp_max: 253
-lxc_net_dhcp_config: ''
+lxc_net_dhcp_config: '/etc/dnsmasq.d/lxc-config'
+lxc_net_dhcp_config_extra: ''
 lxc_net_dnsmasq_user: lxc-dnsmasq
 lxc_net_domain: ''
+
+# lxc container dns settings
+lxc_net_dnsmasq_strict_order: true
+lxc_net_dnsmasq_all_servers: false
+lxc_net_dnsmasq_no_hosts: true
+lxc_net_dnsmasq_cache_size: ''
+lxc_net_dnsmasq_max_forward: ''
 
 # lxc network ipv6 settings
 lxc_net6_address: null ## ie. fd05:ffb8:32b4:1212::1

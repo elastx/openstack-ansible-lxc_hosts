@@ -147,20 +147,7 @@ function start_dnsmasq {
         LXC_IPV6_ARG="--dhcp-range=${LXC_IPV6_ADDR},ra-only --listen-address ${LXC_IPV6_ADDR}"
     fi
 
-    dnsmasq "${LXC_DOMAIN_ARG}" --user="${LXC_DNSMASQ_USER}" \
-                                --pid-file="${VARRUN}/dnsmasq.pid" \
-                                --conf-file="${LXC_DHCP_CONFILE}" \
-                                --listen-address="${LXC_ADDR}" \
-                                --dhcp-range="${LXC_DHCP_RANGE}" \
-                                --dhcp-lease-max="${LXC_DHCP_MAX}" \
-                                --except-interface="lo" \
-                                --interface="${LXC_BRIDGE}" \
-                                --dhcp-leasefile="${DHCP_LEASE_FILE}" \
-                                --dhcp-no-override \
-                                --strict-order \
-                                --bind-interfaces \
-                                --no-hosts \
-                                --dhcp-authoritative $LXC_IPV6_ARG
+    dnsmasq "${LXC_DOMAIN_ARG}" --conf-file="{{ lxc_net_dhcp_config }}"
     success "dnsmasq started."
 }
 
