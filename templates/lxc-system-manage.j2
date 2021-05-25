@@ -147,7 +147,7 @@ function start_dnsmasq {
         LXC_IPV6_ARG="--dhcp-range=${LXC_IPV6_ADDR},ra-only --listen-address ${LXC_IPV6_ADDR}"
     fi
 
-    dnsmasq "${LXC_DOMAIN_ARG}" --conf-file="{{ lxc_net_dhcp_config }}"
+    dnsmasq "${LXC_DOMAIN_ARG}" --conf-file="${LXC_DHCP_CONFILE}"
     success "dnsmasq started."
 }
 

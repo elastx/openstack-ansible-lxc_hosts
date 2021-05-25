@@ -1,12 +1,14 @@
 user={{ lxc_net_dnsmasq_user }}
 pid-file="/run/lxc/dnsmasq.pid"
-conf-file="{{ lxc_net_dhcp_config_extra }}"
-listen-address="{{ lxc_net_address }}"
-dhcp-range="{{ lxc_net_dhcp_range }}"
-dhcp-lease-max="{{ lxc_net_dhcp_max }}"
-except-interface="lo"
-interface="{{ lxc_net_bridge }}"
-dhcp-leasefile="/var/lib/misc/dnsmasq.{{ lxc_net_bridge }}.leases"
+{% if lxc_net_dhcp_config_extra != '' %}
+conf-file={{ lxc_net_dhcp_config_extra }}
+{% endif %}
+listen-address={{ lxc_net_address }}
+dhcp-range={{ lxc_net_dhcp_range }}
+dhcp-lease-max={{ lxc_net_dhcp_max }}
+except-interface=lo
+interface={{ lxc_net_bridge }}
+dhcp-leasefile=/var/lib/misc/dnsmasq.{{ lxc_net_bridge }}.leases
 dhcp-no-override
 bind-interfaces
 {% if lxc_net_dnsmasq_strict_order %}
@@ -19,13 +21,13 @@ all-servers
 no-hosts
 {% endif %}
 dhcp-authoritative
-{% if lxc_net_dnsmasq_cache_size != "" %}
+{% if lxc_net_dnsmasq_cache_size != '' %}
 cache-size={{ lxc_net_dnsmasq_cache_size }}
 {% endif %}
-{% if lxc_net_dnsmasq_max_forward != "" %}
+{% if lxc_net_dnsmasq_max_forward != '' %}
 dns-forward-max={{ lxc_net_dnsmasq_max_forward }}
 {% endif %}
-{% if lxc_net6_address != "" and lxc_net6_netmask != "" %}
+{% if lxc_net6_address != '' and lxc_net6_netmask != '' %}
 dhcp-range={{ lxc_net6_address }},ra-only
 listen-address={{ lxc_net6_address }}
 {% endif %}
