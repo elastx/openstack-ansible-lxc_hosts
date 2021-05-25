@@ -97,7 +97,7 @@ lxc_net_manage_iptables: true  ## If "true" iptables rules will be added when th
 # lxc container dhcp settings
 lxc_net_dhcp_range: 10.0.3.2,10.0.3.253
 lxc_net_dhcp_max: 253
-lxc_net_dhcp_config: '/etc/dnsmasq.d/lxc-config'
+lxc_net_dhcp_config: '/etc/dnsmasq.d/lxc-osa-dnsmasq'
 lxc_net_dhcp_config_extra: ''
 lxc_net_dnsmasq_user: lxc-dnsmasq
 lxc_net_domain: ''
