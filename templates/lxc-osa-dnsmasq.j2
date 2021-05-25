@@ -28,4 +28,4 @@ dns-forward-max={{ lxc_net_dnsmasq_max_forward }}
 {% if lxc_net6_address != "" and lxc_net6_netmask != "" %}
 dhcp-range={{ lxc_net6_address }},ra-only
 listen-address={{ lxc_net6_address }}
-{% end %}
+{% endif %}
