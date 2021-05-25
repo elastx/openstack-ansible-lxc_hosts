@@ -1,5 +1,5 @@
 user={{ lxc_net_dnsmasq_user }}
-pid-file="/run/lxc/dnsmasq.pid"
+pid-file=/run/lxc/dnsmasq.pid
 {% if lxc_net_dhcp_config_extra != '' %}
 conf-file={{ lxc_net_dhcp_config_extra }}
 {% endif %}
@@ -27,7 +27,7 @@ cache-size={{ lxc_net_dnsmasq_cache_size }}
 {% if lxc_net_dnsmasq_max_forward != '' %}
 dns-forward-max={{ lxc_net_dnsmasq_max_forward }}
 {% endif %}
-{% if lxc_net6_address != '' and lxc_net6_netmask != '' %}
+{% if lxc_net6_address != None and lxc_net6_netmask != None %}
 dhcp-range={{ lxc_net6_address }},ra-only
 listen-address={{ lxc_net6_address }}
 {% endif %}
