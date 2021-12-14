@@ -9,6 +9,7 @@ set -e -x
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get remove -y --purge snap* lxc* lxd* resolvconf* || true
+rm -f /etc/apt/apt.conf.d/20snapd.conf
 
 # Update base distribution
 apt-get update
