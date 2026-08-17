@@ -57,7 +57,7 @@
 
 - name: Restart sshd
   service:
-    name: sshd
+    name: "{{ lxc_ssh_service_name }}"
     state: "restarted"
     enabled: yes
 
